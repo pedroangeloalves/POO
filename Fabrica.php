@@ -1,3 +1,4 @@
+<pre>
 <?php
 
 // criar o objeto relacionado com o Projeto
@@ -8,23 +9,18 @@
 // include - permite seguir a logica, atenção
 
   require_once "Carro.php";
+  require_once './Motor.php';
+  
+  $motor = new Motor();
 
-    $veiculo1 = new Carro("preto");
-    $veiculo2 = new Carro();
+    $veiculo1 = new Carro($motor,"preto");
+    $veiculo2 = clone $veiculo1;
 
     $veiculo2->cor = "vermelho";
+    $veiculo2->abastecer(15);
    
+    $veiculo1->acelerar(40);
 
-    var_dump($veiculo1, $veiculo2);
-    
-    echo $veiculo2::MODELO.$veiculo2::MARCA."\n"; // o :: mostra a constant
-    
-   // if ($veiculo1 === $veiculo2)
-   // {
-   //   echo "sim\n";     
-   // } else  
-   // {  
-   //   echo "nao\n";     
-   // }
-    
+var_dump($veiculo1);
+
 
