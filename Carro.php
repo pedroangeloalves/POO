@@ -20,7 +20,7 @@ class Carro
          * @param Motor $motor
          * @param string $cor
          */
-	public function __construct(Motor $motor, $cor="Branco") // metodos Magicos que começam com __
+	public function __construct(Motor $motor, $cor="Branco") // metodos Magicos que começam com __ / tipagem entre Motor e $motor
 	{
 	    $this->tanqueCombustivel = 10;
 	    $this->cor = $cor;	
