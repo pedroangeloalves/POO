@@ -1,7 +1,8 @@
 <?php
 
+namespace POO\Motor;
 
-class Motor 
+abstract class Motor 
 {
     /**
      * Classe generica para motor 
@@ -10,8 +11,9 @@ class Motor
      */
     
     const POTENCIA = 1.0;
+    
     private $tipoCombustivel = "flex";
-    private $aceleracao = 0;
+    protected $aceleracao = 0;
       
     /**
      * acelerar o motor

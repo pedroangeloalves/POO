@@ -1,11 +1,15 @@
 <?php
 
-// classe é o projeto
+namespace POO\Veiculos;
+
+use POO\Motor\Motor;
+
+// classe é o projetofefef 
 class Carro
 {
 
     const MODELO = "A3";
-	const MARCA  = "AUDI" ;
+    const MARCA  = "AUDI" ;
 
 	public  $cor;
         /**
@@ -68,11 +72,36 @@ class Carro
 	    $this->tanqueCombustivel += $valor ; // o sinal do + irá acrescentar
 	
 	}
+        
+        public function __call($name, $arguments)
+        {
+            echo "Voce nao adquiriu o opcional: " . $name;
+        }
+        /**
+         * sobrecarga - Overloading de atributo
+         * @param type $name
+         * @param type $value
+         */
+        public function __get($name)
+        {
+            echo "Voce tentaou ler o atributo :  $name \n\n";
+        }
+        
+        /**
+         * sobrecarga - Overloading de atributo
+         * @param type $name
+         * @param type $value
+         */
+        public function __set($name, $value)
+        {
+            $this->$name=$value;
+            echo "voce tentou escrever no atributo: $name o valor $value \n\n";
+        }
+
+
 
 
 }
-
-
 // comentario 
 
 

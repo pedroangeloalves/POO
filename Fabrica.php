@@ -8,21 +8,37 @@
 // require - não permite seguir no programa apresenta FATAL ERRO
 // include - permite seguir a logica, atenção
 
-  require_once "Carro.php";
-  require_once './Motor.php';
+  require_once './Veiculos/Carro.php';
+  require_once './Motor/Motor.php';
+  require_once './Motor/Motor18.php';
+  require_once './Motor/MotorTurbo.php';
   
-  $motor = new Motor();
-
-    $veiculo1 = new Carro($motor,"preto");
+  require_once './MWM/Motor.php';
+  
+  //  $motor = new Motor();
+    $motor18 = new POO\Motor\Motor18();
+    $motorTurbo = new POO\Motor\MotorTurbo();
+    $MWM = new MWM\Motor();
+    
+    
+    
+    $veiculo1 = new POO\Veiculos\Carro($motorTurbo,"preto");
     $veiculo2 = clone $veiculo1;
 
     $veiculo2->cor = "vermelho";
     $veiculo2->abastecer(15);
    
     $veiculo1->acelerar(40);
+    $veiculo1->estacionar();
 
-var_dump($veiculo1);
+    $veiculo1->tanqueCombustivel = "120";
+    
+  var_dump($veiculo1);
 
-echo "Potencia do Motor: " .Motor::POTENCIA;
+// echo "Potencia do Motor: " .Motor::POTENCIA;
+    
+   
+   
+  // var_dump($motor18);
 
 
