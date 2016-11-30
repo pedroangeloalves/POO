@@ -1,8 +1,10 @@
 <?php
 
 namespace POO\Motor;
+use POO\Motor\InterfaceMotor;
 
-abstract class Motor 
+
+abstract class Motor implements InterfaceMotor
 {
     /**
      * Classe generica para motor 
@@ -14,6 +16,8 @@ abstract class Motor
     
     private $tipoCombustivel = "flex";
     protected $aceleracao = 0;
+    private $ligado = false;
+    
       
     /**
      * acelerar o motor
@@ -26,5 +30,27 @@ abstract class Motor
         $potencia = $valor * self::POTENCIA; 
         return $potencia;
     }        
+    /**
+     * liga o motor setando o atributo ligado como true
+     */
+    public function ligar()
+    {
+        $this->ligado = true;
+    }
+    /**
+     * desliga o motor setando o atributo ligado como false
+     */
+    public function desliga()
+    {
+        $this->ligado = false;        
+    }
+    /**
+     * informa se o motor esta ligado ou desligado
+     * @return bool
+     */
+    public function estaLigado()
+    {
+        return$this->ligado;
+    }
     
 }

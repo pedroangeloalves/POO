@@ -3,6 +3,7 @@
 namespace POO\Veiculos;
 
 use POO\Motor\Motor;
+use \POO\Motor\InterfaceMotor;
 
 // classe é o projetofefef 
 class Carro
@@ -24,7 +25,7 @@ class Carro
          * @param Motor $motor
          * @param string $cor
          */
-	public function __construct(Motor $motor, $cor="Branco") // metodos Magicos que começam com __ / tipagem entre Motor e $motor
+	public function __construct(InterfaceMotor $motor, $cor="Branco") // metodos Magicos que começam com __ / tipagem entre Motor e $motor
 	{
 	    $this->tanqueCombustivel = 10;
 	    $this->cor = $cor;	
@@ -33,21 +34,18 @@ class Carro
 	}
         
         /**
-         * Liga o Motor
+         * Liga ou desliga o Motor
          */
-	public function ligar()
+	public function ligarDesliga()
 	{
-	
+            if ($this->motor->estaLigado())
+            {
+                $this->motor->desliga();
+            } else {
+                $this->motor->ligar();                
+            }            
 	}
-        
-        /**
-         * Desliga o Motor
-         */
-	public function desligar()
-	{
-            
-	}
-        
+   
         /**
          * Envia aceleração ao motor
          */
@@ -63,8 +61,15 @@ class Carro
          */
         public function acelerar($valor)
         {
-            $torque = $this->motor->acelerar($valor);
-            $this->andar($torque);
+            try {
+                echo "ante de acelerar\n";
+                $torque = $this->motor->acelerar($valor);
+                $this->andar($torque);
+                
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            echo "fim da função\n";
         }
 
         public function abastecer($valor)

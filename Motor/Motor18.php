@@ -2,14 +2,15 @@
 namespace POO\Motor;
 
 use POO\Motor\Motor;
-use MWM\Motor as MotorMWM;
+// use MWM\Motor as MotorMWM;
 
 /**
  * Description of Motor18
  *
  * @author Pedro
  */
-class Motor18 extends Motor
+class Motor18 extends Motor implements \JsonSerializable,
+                                        \Countable
 {
     const POTENCIA = 1.8;
     
@@ -26,6 +27,12 @@ class Motor18 extends Motor
      */
     public function acelerar($valor = 0)
     {
+       
+        if ($this->estaLigado() == false)
+        {
+            throw new Exception("Nao foi possivel acelerar, porque o motor nao esta ligado");
+        }
+        
        $this->aceleracao = $valor;
        
        $torque = $valor * self::POTENCIA;
@@ -37,5 +44,18 @@ class Motor18 extends Motor
        } else {
            return $torque;
        }
+    }
+    
+    public function jsonSerialize()
+    {
+        return array(
+            "potencia" => self::POTENCIA,
+            "nitro" => $this->nitro
+                );
+    }
+    
+    public function count()
+    {
+        return $this->aceleracao;
     }
 }

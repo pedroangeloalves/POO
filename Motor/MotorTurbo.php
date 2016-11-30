@@ -8,7 +8,7 @@ use POO\Motor\Motor;
  *
  * @author aluno
  */
-class MotorTurbo extends Motor
+class MotorTurbo extends Motor 
 
 {
     const POTENCIA = 2.8;
