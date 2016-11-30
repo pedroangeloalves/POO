@@ -15,8 +15,7 @@ function carregaClasse($nomeClasse)
     $novo .= ".php";
     
   //  echo $novo;
-    
-    require_once __DIR__."/".$novo;
+  require_once __DIR__."/".$novo;
         
 }
 spl_autoload_register("carregaClasse");

@@ -66,7 +66,7 @@ class Carro
                 $torque = $this->motor->acelerar($valor);
                 $this->andar($torque);
                 
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 echo $e->getMessage();
             }
             echo "fim da função\n";

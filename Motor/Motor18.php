@@ -30,7 +30,7 @@ class Motor18 extends Motor implements \JsonSerializable,
        
         if ($this->estaLigado() == false)
         {
-            throw new Exception("Nao foi possivel acelerar, porque o motor nao esta ligado");
+            throw new \Exception("Nao foi possivel acelerar, porque o motor nao esta ligado");
         }
         
        $this->aceleracao = $valor;
